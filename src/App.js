@@ -8,7 +8,7 @@ const App = ({items}) =>  {
   const allPlanets = items.map((planet, index) => {
     return(
       <li key={index}>
-        <Planet name={planet.name} dens={planet.dens} telescope={planet.telescope} year={planet.year} />
+        <Planet name={planet.name} dens={planet.dens} />
       </li>
     );
   })
@@ -18,10 +18,10 @@ const App = ({items}) =>  {
         
           <div>
             <h1>Hello! I am a planet</h1>
-            <p>If you know me, please touch the button</p>
+            <p>If you know me, please touch next button</p>
           </div>
         
-        <Col sm={4}>
+        <Col>
           <Button 
             onClick={() => getPlanets()}
             >
@@ -30,7 +30,7 @@ const App = ({items}) =>  {
         </Col>
       </Row>
       <Row>
-        <Col sm={12}>
+        <Col>
           <div>{ items.length!=0 ? 
             <ul>{allPlanets}</ul>
                   :

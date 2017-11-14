@@ -3,12 +3,12 @@ import store from './store'
 export async function search (text) {
     const url = text;
     fetch(url)
-    .then(result=>result.json())
-    .then(result=> {
+    .then(res=>res.json())
+    .then(res=> {
         let items = [...store.getState().items];
         let newPlanet = items.concat({
             name : res.pl_name,
-            density : res.pl_dens            
+            dens : res.pl_dens            
         });
         store.setState({
             items : newPlanet
@@ -19,9 +19,11 @@ export async function search (text) {
 export async function getPlanets() {
     const url = "data/earth-like-result.json";
     fetch(url)
-    .then(res=> res.json())
+    .then(res => {res.json()
+        console.log(res)})
     .then(res => {
-        res.result.map(planet =>{
+        res.results.map(planet =>{
+            console.log(planet)
             return(search(planet));
         })
     })
